@@ -1,0 +1,120 @@
+
+//password file must be in the following format:
+/*
+ website1: password1
+ website2: password2
+ ...
+ */
+
+
+#include <iostream>
+#include <fstream>
+#include <ostream>
+
+using namespace std;
+
+int main(){
+    string filename; //this is the file containing all your passwords
+    //once the program has encrypted it, this file can be deleted off your computer
+
+    int count=0;
+    string size[100];  //I only need to store upto 50 passwords
+    
+    cout<<"Enter the name of the file containing passwords:"<<endl;
+    cin>>filename;
+    
+    ifstream inFS;
+    inFS.open(filename);
+    
+    if(!inFS.is_open()){
+        cout<<"Error opening file"<<endl;
+        return 1;
+    }
+    
+    while(!inFS.eof()){
+        inFS>>size[count];
+        count++;
+    }
+    
+   
+    ofstream outFS("NewFile.txt"); //this is the encrypted file
+    //to decrypt, run it through the same program
+    for (int i=0; i<count; i++){
+        for(int j=0; j<size[i].length(); j++)
+        {
+            if(size[i][j]=='a'){size[i][j]='b';}
+            else if (size[i][j]=='b'){size[i][j]='a';}
+            
+            if(size[i][j]=='e'){size[i][j]='i';}
+            else if (size[i][j]=='i'){size[i][j]='e';}
+            
+            if(size[i][j]=='o'){size[i][j]='u';}
+            else if (size[i][j]=='u'){size[i][j]='o';}
+            
+            if(size[i][j]=='z'){size[i][j]='x';}
+            else if (size[i][j]=='x'){size[i][j]='z';}
+            
+            if(size[i][j]=='y'){size[i][j]='t';}
+            else if (size[i][j]=='t'){size[i][j]='y';}
+            
+            if(size[i][j]=='B'){size[i][j]='G';}
+            else if (size[i][j]=='G'){size[i][j]='B';}
+            
+            if(size[i][j]=='h'){size[i][j]='k';}
+            else if (size[i][j]=='k'){size[i][j]='h';}
+            
+            if(size[i][j]=='l'){size[i][j]='q';}
+            else if (size[i][j]=='q'){size[i][j]='l';}
+            
+            if(size[i][j]=='n'){size[i][j]='v';}
+            else if (size[i][j]=='v'){size[i][j]='n';}
+            
+            if(size[i][j]=='C'){size[i][j]='W';}
+            else if (size[i][j]=='W'){size[i][j]='C';}
+            
+            if(size[i][j]=='N'){size[i][j]='m';}
+            else if (size[i][j]=='m'){size[i][j]='N';}
+            
+            if(size[i][j]=='J'){size[i][j]='F';}
+            else if (size[i][j]=='F'){size[i][j]='J';}
+            
+            if(size[i][j]=='A'){size[i][j]='I';}
+            else if (size[i][j]=='I'){size[i][j]='A';}
+            
+            if(size[i][j]=='_'){size[i][j]='@';}
+            else if (size[i][j]=='@'){size[i][j]='_';}
+            
+            if(size[i][j]=='!'){size[i][j]='.';}
+            else if (size[i][j]=='.'){size[i][j]='!';}
+            
+            if(size[i][j]=='1'){size[i][j]='3';}
+            else if (size[i][j]=='3'){size[i][j]='1';}
+            
+            if(size[i][j]=='5'){size[i][j]='8';}
+            else if (size[i][j]=='8'){size[i][j]='5';}
+            
+            if(size[i][j]=='2'){size[i][j]='4';}
+            else if (size[i][j]=='4'){size[i][j]='2';}
+            
+            if(size[i][j]=='6'){size[i][j]='7';}
+            else if (size[i][j]=='7'){size[i][j]='6';}
+            
+            if(size[i][j]=='9'){size[i][j]='0';}
+            else if (size[i][j]=='0'){size[i][j]='9';}
+            
+            if(size[i][j]=='U'){size[i][j]='P';}
+            else if (size[i][j]=='P'){size[i][j]='U';}
+            
+            if(size[i][j]=='*'){size[i][j]='$';}
+            else if (size[i][j]=='$'){size[i][j]='*';}
+            
+            if(size[i][j]=='X'){size[i][j]='Z';}
+            else if (size[i][j]=='Z'){size[i][j]='X';}
+            
+        }
+        outFS<<size[i]<<" ";
+        if(i%2==1){outFS<<endl;}
+    }
+    
+    
+}
